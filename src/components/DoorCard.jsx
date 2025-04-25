@@ -38,6 +38,7 @@ const DoorCard = ({door,getDoors}) => {
             }
             await axios.put(`${API_URI}/${door.id}`,doorForm);
             alert("Data edited successfully..");
+            setIsEdit(false);
             getDoors();
         } catch (error) {
             console.log(error);
@@ -57,7 +58,7 @@ const DoorCard = ({door,getDoors}) => {
           <button onClick={deleteDoor}>Delete</button>
         </div>
       </div>:<div>
-        <form action="" onClick={handelForm}>
+        <form action="" onSubmit={handelForm}>
             <input type="text" value={doorForm.name} onChange={handelInput} name="name" placeholder="Enter door name....." />
             <input type="text" value={doorForm.status} onChange={handelInput} name="status" placeholder="Enter status.." />
             <input type="submit" />
